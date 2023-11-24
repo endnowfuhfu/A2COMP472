@@ -1,0 +1,2 @@
+model name,size of vocabulary,number of correct labels,questions without guessing,accuracy
+word2vec-google-news-300,3000000,70,79,0.8860759493670886
