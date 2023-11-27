@@ -2,6 +2,7 @@ import gensim.downloader as api
 import json
 import pandas as pd
 import random
+import os
 
 # Function to find the closest synonym
 def find_closest_synonym(model, question_word, answer_words):
@@ -30,7 +31,7 @@ def no_answer_words_in_model(model, answer_words):
             return False
     return True
 
-def task1_details(model, synonym_dataset):
+def task_details(model, synonym_dataset, modelname):
     output_results = []
     correct_labels = 0
     questions_without_guessing = 0
@@ -63,12 +64,12 @@ def task1_details(model, synonym_dataset):
     details_df = pd.DataFrame(output_results, columns=columns)
 
     # Use the DataFrame to save the results in a csv file
-    details_file = "word2vec-google-news-300-details.csv"
+    details_file = modelname+"-details.csv"
     details_df.to_csv(details_file, index=False)
 
     return correct_labels, questions_without_guessing
 
-def task1_analysis(model, correct_labels, questions_without_guessing):
+def task_analysis(model, correct_labels, questions_without_guessing, modelname):
 
      # Vocabulary size, correct labels, questions without guessing, and accuracy
     vocab_size = len(model.key_to_index)    
@@ -77,27 +78,48 @@ def task1_analysis(model, correct_labels, questions_without_guessing):
 
     # Save analysis to csv
     analysis_data = [
-        ["word2vec-google-news-300", vocab_size, correct_labels, questions_without_guessing, accuracy]
+        [modelname, vocab_size, correct_labels, questions_without_guessing, accuracy]
     ]
 
     columns = ['model name', 'size of vocabulary', 'number of correct labels', 'questions without guessing', 'accuracy']
     analysis_df = pd.DataFrame(analysis_data, columns=columns)
 
     analysis_file = "analysis.csv"
-    analysis_df.to_csv(analysis_file, index=False)
+
+     # Check if the file exists and if it does, do not write headers
+    file_exists = os.path.isfile(analysis_file)
+    
+    # Open the file in append mode ('a') if it exists or write mode ('w') otherwise
+    with open(analysis_file, 'a' if file_exists else 'w', newline='') as f:
+        analysis_df.to_csv(f, header=not file_exists, index=False)
 
 
 def main():
     model = api.load("word2vec-google-news-300")
-
+    model2 = api.load("glove-wiki-gigaword-100")
+    model3 = api.load("glove-twitter-200")
+    model4 = api.load("glove-wiki-gigaword-300")
+    model5 = api.load("glove-wiki-gigaword-200")
+    #model6 = api.load("fasttext-wiki-news-subwords-300")
+    
     with open('synonym.json', 'r') as file:
         synonym_dataset = json.load(file)
 
-    correct_labels, questions_without_guessing = task1_details(model, synonym_dataset)
+    correct_labels, questions_without_guessing = task_details(model, synonym_dataset, "word2vec-google-news-300")
+    task_analysis(model, correct_labels, questions_without_guessing, "word2vec-google-news-300")
 
-    task1_analysis(model, correct_labels, questions_without_guessing)
-    
-   
+    correct_labels, questions_without_guessing = task_details(model2, synonym_dataset, "glove-wiki-gigaword-100")
+    task_analysis(model2, correct_labels, questions_without_guessing, "glove-wiki-gigaword-100")
+
+    correct_labels, questions_without_guessing = task_details(model3, synonym_dataset, "glove-twitter-200")
+    task_analysis(model3, correct_labels, questions_without_guessing, "glove-twitter-200")
+
+    correct_labels, questions_without_guessing = task_details(model4, synonym_dataset, "glove-wiki-gigaword-300")
+    task_analysis(model4, correct_labels, questions_without_guessing, "glove-wiki-gigaword-300")
+
+    correct_labels, questions_without_guessing = task_details(model5, synonym_dataset, "glove-wiki-gigaword-200")
+    task_analysis(model5, correct_labels, questions_without_guessing, "glove-wiki-gigaword-200")
+ 
 
 if __name__ == "__main__":
     main()
