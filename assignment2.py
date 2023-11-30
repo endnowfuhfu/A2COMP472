@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import random
 import os
+import matplotlib.pyplot as plt
 
 # Function to find the closest synonym
 def find_closest_synonym(model, question_word, answer_words):
@@ -93,6 +94,15 @@ def task_analysis(model, correct_labels, questions_without_guessing, modelname):
     with open(analysis_file, 'a' if file_exists else 'w', newline='') as f:
         analysis_df.to_csv(f, header=not file_exists, index=False)
 
+def plot_model_performance(model_names, accuracies):
+    plt.figure(figsize=(10, 6))
+    plt.bar(model_names, accuracies, color='blue')
+    plt.xlabel('Models')
+    plt.ylabel('Accuracy')
+    plt.title('Comparison of Model Performances')
+    plt.xticks(rotation=45, ha='right')  # Rotate labels and align them horizontally to the right
+    plt.tight_layout()  # Adjust the padding between and around subplots
+    plt.show()
 
 def main():
     model = api.load("word2vec-google-news-300")
@@ -105,21 +115,36 @@ def main():
     with open('synonym.json', 'r') as file:
         synonym_dataset = json.load(file)
 
-    correct_labels, questions_without_guessing = task_details(model, synonym_dataset, "word2vec-google-news-300")
-    task_analysis(model, correct_labels, questions_without_guessing, "word2vec-google-news-300")
+ #   correct_labels, questions_without_guessing = task_details(model, synonym_dataset, "word2vec-google-news-300")
+ #   task_analysis(model, correct_labels, questions_without_guessing, "word2vec-google-news-300")
 
-    correct_labels, questions_without_guessing = task_details(model2, synonym_dataset, "glove-wiki-gigaword-100")
-    task_analysis(model2, correct_labels, questions_without_guessing, "glove-wiki-gigaword-100")
+   # correct_labels, questions_without_guessing = task_details(model2, synonym_dataset, "glove-wiki-gigaword-100")
+  #  task_analysis(model2, correct_labels, questions_without_guessing, "glove-wiki-gigaword-100")
 
-    correct_labels, questions_without_guessing = task_details(model3, synonym_dataset, "glove-twitter-200")
-    task_analysis(model3, correct_labels, questions_without_guessing, "glove-twitter-200")
+  #  correct_labels, questions_without_guessing = task_details(model3, synonym_dataset, "glove-twitter-200")
+   # task_analysis(model3, correct_labels, questions_without_guessing, "glove-twitter-200")
 
-    correct_labels, questions_without_guessing = task_details(model4, synonym_dataset, "glove-wiki-gigaword-300")
-    task_analysis(model4, correct_labels, questions_without_guessing, "glove-wiki-gigaword-300")
+  #  correct_labels, questions_without_guessing = task_details(model4, synonym_dataset, "glove-wiki-gigaword-300")
+  #  task_analysis(model4, correct_labels, questions_without_guessing, "glove-wiki-gigaword-300")
 
-    correct_labels, questions_without_guessing = task_details(model5, synonym_dataset, "glove-wiki-gigaword-200")
-    task_analysis(model5, correct_labels, questions_without_guessing, "glove-wiki-gigaword-200")
- 
+  #  correct_labels, questions_without_guessing = task_details(model5, synonym_dataset, "glove-wiki-gigaword-200")
+  #  task_analysis(model5, correct_labels, questions_without_guessing, "glove-wiki-gigaword-200")
+
+    model_accuracies = {}
+
+    # Run task_details and task_analysis for each model and store accuracies
+    for model_name, model in [("word2vec-google-news-300", model), 
+                              ("glove-wiki-gigaword-100", model2), 
+                              ("glove-twitter-200", model3), 
+                              ("glove-wiki-gigaword-300", model4), 
+                              ("glove-wiki-gigaword-200", model5)]:
+        correct_labels, questions_without_guessing = task_details(model, synonym_dataset, model_name)
+        accuracy = correct_labels / questions_without_guessing if questions_without_guessing > 0 else 0
+        model_accuracies[model_name] = accuracy
+        task_analysis(model, correct_labels, questions_without_guessing, model_name)
+
+    # Plot the performance
+    plot_model_performance(list(model_accuracies.keys()), list(model_accuracies.values()))
 
 if __name__ == "__main__":
     main()
