@@ -21,8 +21,37 @@ The following graph shows the performance of different Word2Vec models compared 
 
 ## Analysis
 
-The graph above indicates that the models with a window size of 10 (word2vec_size100_window10 and word2vec_size200_window10) generally outperformed those with a window size of 5. This suggests that a larger context window may help the model capture more relevant semantic information for the task of synonym detection.
+This section presents a comparative analysis of various Word2Vec models against a random baseline and a gold standard, focusing on their accuracy in synonym detection tasks.
 
-Compared to the random baseline, all models showed a significant improvement, indicating that the Word2Vec embeddings do capture meaningful semantic relationships. However, there is still a considerable gap compared to the human gold-standard, which could be due to several factors, such as the complexity of human language understanding and the limitations of the training corpus.
+### Performance Benchmarks
+- **Random Baseline**: 
+  - **Accuracy**: 26.25%
+  - Serves as a basic benchmark for random guesswork.
+- **Gold Standard**:
+  - **Accuracy**: 88.28%
+  - Sets a high-performance target.
 
-Further improvements could be made by expanding the training corpus, fine-tuning the model hyperparameters, or exploring more advanced language models.
+### Word2Vec Model Evaluations
+
+1. **word2vec_size100_window5**
+   - **Vocabulary Size**: 45,104
+   - **Accuracy**: 20.29% (14/69 correct)
+   - **Analysis**: Underperforms compared to the random baseline, suggesting limitations due to the smaller vector size and window size.
+
+2. **word2vec_size200_window5**
+   - **Vocabulary Size**: 45,104
+   - **Accuracy**: 27.54% (19/69 correct)
+   - **Analysis**: Shows improvement over the previous model, exceeding the random baseline slightly. Indicates a positive impact of a larger vector size.
+
+3. **word2vec_size100_window10**
+   - **Vocabulary Size**: 45,104
+   - **Accuracy**: 21.74% (15/69 correct)
+   - **Analysis**: Minor improvement over the size100_window5 model but still below the random baseline. Increased window size does not significantly enhance performance.
+
+4. **word2vec_size200_window10**
+   - **Vocabulary Size**: 45,104
+   - **Accuracy**: 31.88% (22/69 correct)
+   - **Analysis**: The best performer among the tested models. A larger vector size and window size contribute positively, achieving an accuracy above the random baseline. However, it still significantly lags behind the gold standard.
+
+### Conclusion
+The analysis reveals that larger vector sizes and window sizes can improve Word2Vec models' performance in synonym detection tasks. However, despite these improvements, all models substantially trail the gold standard. This gap underscores the necessity for further optimizations, such as parameter tuning, using more extensive training data, or exploring different modeling techniques. Continuous experimentation and model refinement are essential to approach the gold standard's level of performance.
