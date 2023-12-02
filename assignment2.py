@@ -94,16 +94,20 @@ def task_analysis(model, correct_labels, questions_without_guessing, modelname):
     with open(analysis_file, 'a' if file_exists else 'w', newline='') as f:
         analysis_df.to_csv(f, header=not file_exists, index=False)
 
-def plot_model_performance(model_names, accuracies):
-    plt.figure(figsize=(10, 6))
-    plt.bar(model_names, accuracies, color='blue')
-    plt.xlabel('Models')
+def plot_model_performance(model_names, accuracies, random_baseline, human_gold_standard):
+    plt.figure(figsize=(12, 7))
+    plt.bar(model_names + ['Random Baseline', 'Human Gold Standard'], accuracies + [random_baseline, human_gold_standard], color='blue')
+    plt.xlabel('Models and Standards')
     plt.ylabel('Accuracy')
-    plt.title('Comparison of Model Performances')
+    plt.title('Comparison of Model Performances with Baselines')
     plt.xticks(rotation=45, ha='right')  # Rotate labels and align them horizontally to the right
     plt.tight_layout()  # Adjust the padding between and around subplots
+    plt.savefig('model_performance_comparison.png')
     plt.show()
 
+def read_random_baseline_accuracy(file_path='random_baseline_accuracy.txt'):
+    with open(file_path, 'r') as f:
+        return float(f.read())
 def main():
     model = api.load("word2vec-google-news-300")
     model2 = api.load("glove-wiki-gigaword-100")
@@ -115,20 +119,6 @@ def main():
     with open('synonym.json', 'r') as file:
         synonym_dataset = json.load(file)
 
- #   correct_labels, questions_without_guessing = task_details(model, synonym_dataset, "word2vec-google-news-300")
- #   task_analysis(model, correct_labels, questions_without_guessing, "word2vec-google-news-300")
-
-   # correct_labels, questions_without_guessing = task_details(model2, synonym_dataset, "glove-wiki-gigaword-100")
-  #  task_analysis(model2, correct_labels, questions_without_guessing, "glove-wiki-gigaword-100")
-
-  #  correct_labels, questions_without_guessing = task_details(model3, synonym_dataset, "glove-twitter-200")
-   # task_analysis(model3, correct_labels, questions_without_guessing, "glove-twitter-200")
-
-  #  correct_labels, questions_without_guessing = task_details(model4, synonym_dataset, "glove-wiki-gigaword-300")
-  #  task_analysis(model4, correct_labels, questions_without_guessing, "glove-wiki-gigaword-300")
-
-  #  correct_labels, questions_without_guessing = task_details(model5, synonym_dataset, "glove-wiki-gigaword-200")
-  #  task_analysis(model5, correct_labels, questions_without_guessing, "glove-wiki-gigaword-200")
 
     model_accuracies = {}
 
@@ -143,8 +133,11 @@ def main():
         model_accuracies[model_name] = accuracy
         task_analysis(model, correct_labels, questions_without_guessing, model_name)
 
+    # Add your predefined random baseline and human gold standard accuracies here
+    random_baseline_accuracy = read_random_baseline_accuracy()
+    human_gold_standard_accuracy = 0.8828
     # Plot the performance
-    plot_model_performance(list(model_accuracies.keys()), list(model_accuracies.values()))
+    plot_model_performance(list(model_accuracies.keys()), list(model_accuracies.values()), random_baseline_accuracy, human_gold_standard_accuracy)
 
 if __name__ == "__main__":
     main()
