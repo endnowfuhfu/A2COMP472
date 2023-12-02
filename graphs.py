@@ -20,7 +20,6 @@ def read_random_baseline_accuracy(file_path='random_baseline_accuracy.txt'):
     with open(file_path, 'r') as f:
         return float(f.read())
 
-# Use this function to get the random baseline accuracy
 random_baseline_accuracy = read_random_baseline_accuracy()
 
 human_gold_standard_accuracy = 0.8828
@@ -31,17 +30,21 @@ accuracies.extend([random_baseline_accuracy, human_gold_standard_accuracy])
 
 # Generate the bar graph
 plt.figure(figsize=(10, 6))
-plt.bar(models, accuracies, color=['blue', 'blue', 'blue', 'blue', 'red', 'green'])
+bars = plt.bar(models, accuracies, color=['blue', 'blue', 'blue', 'blue', 'red', 'green'])
 plt.xlabel('Models')
 plt.ylabel('Accuracy')
 plt.title('Model Performance Comparison')
 plt.ylim([0, 1])
 
-# Add the accuracy values on top of the bars
-for i, accuracy in enumerate(accuracies):
-    plt.text(i, accuracy + 0.02, f'{accuracy:.2f}', ha='center')
+# Rotate the x-axis labels to prevent overlap
+plt.xticks(rotation=45, ha='right')  # Rotate labels and adjust alignment
 
-# Save the graph
+# Add the accuracy values on top of the bars
+for bar in bars:
+    yval = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2, yval + 0.02, f'{yval:.2f}', ha='center', va='bottom')
+
+# Adjust layout to make room for the rotated x-axis labels
 plt.tight_layout()
 plt.savefig('model_comparison.png')
 plt.show()

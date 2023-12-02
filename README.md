@@ -1,4 +1,4 @@
-# AI Assignment 1 - COMP 472
+# AI Assignment 2 - COMP 472
 
 ## Introduction
 This project explores Natural Language Processing (NLP) through the application of various word embeddings using the word2vec library. It was developed for the Artificial Intelligence Class COMP 472.
