@@ -21,6 +21,18 @@ The following graph compares Pre-trained Models
 
 The following graph shows the performance of different Word2Vec models compared to a random baseline and the human gold-standard.
 
+## Analysis
+
+This section compares 2 models from different corpora, but same embedding size and  models from the same corpus, but different embedding size.
+
+### Different Corpora
+We can see that the accuracy of glove-twitter-200 is much lower that glove-wiki-gigaword-200. This is probably because Twitter contains a lot of slang, abbreviations, and informal language. This might make it less suitable for tasks that require understanding of standard or formal vocabulary compared to the glove-wiki-gigaword-200 model, which is trained on text from Wikipedia, a more formal and curated dataset.
+
+### Different Embeddings
+
+
+
+
 ![Model Comparison Graph](model_comparison.png)
 
 ## Analysis
