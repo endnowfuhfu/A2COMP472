@@ -17,7 +17,7 @@ This project explores Natural Language Processing (NLP) through the application 
 
 The following graph compares Pre-trained Models
 
-![Model Comparison Graph](model_performance_comparison.png)
+![Model Comparison Graph]()
 
 The following graph shows the performance of different Word2Vec models compared to a random baseline and the human gold-standard.
 
