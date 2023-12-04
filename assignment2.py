@@ -94,14 +94,27 @@ def task_analysis(model, correct_labels, questions_without_guessing, modelname):
     with open(analysis_file, 'a' if file_exists else 'w', newline='') as f:
         analysis_df.to_csv(f, header=not file_exists, index=False)
 
+
 def plot_model_performance(model_names, accuracies, random_baseline, human_gold_standard):
     plt.figure(figsize=(12, 7))
-    plt.bar(model_names + ['Random Baseline', 'Human Gold Standard'], accuracies + [random_baseline, human_gold_standard], color='blue')
+    
+    # This is the list of colors for each bar, assuming the models' bars are blue, the random baseline is red, and the gold standard is green
+    colors = ['blue'] * len(model_names) + ['red', 'green']
+    
+    # Plot the bars
+    bars = plt.bar(model_names + ['Random Baseline', 'Human Gold Standard'], accuracies + [random_baseline, human_gold_standard], color=colors)
+    
+    # Add the accuracy numbers on top of the bars
+    for bar in bars:
+        yval = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width()/2.0, yval, round(yval, 2), va='bottom', ha='center', color='black')
+    
     plt.xlabel('Models and Standards')
     plt.ylabel('Accuracy')
     plt.title('Comparison of Model Performances with Baselines')
     plt.xticks(rotation=45, ha='right')  # Rotate labels and align them horizontally to the right
     plt.tight_layout()  # Adjust the padding between and around subplots
+    
     plt.savefig('model_performance_comparison.png')
     plt.show()
 
