@@ -124,10 +124,10 @@ def main():
 
     # Run task_details and task_analysis for each model and store accuracies
     for model_name, model in [("word2vec-google-news-300", model), 
-                              ("glove-wiki-gigaword-100", model2), 
-                              ("glove-twitter-200", model3), 
-                              ("glove-wiki-gigaword-300", model4), 
-                              ("glove-wiki-gigaword-200", model5)]:
+                              ("glove-twitter-200", model2), 
+                              ("glove-wiki-gigaword-200", model3), 
+                              ("glove-wiki-gigaword-100", model4), 
+                              ("glove-wiki-gigaword-300", model5)]:
         correct_labels, questions_without_guessing = task_details(model, synonym_dataset, model_name)
         accuracy = correct_labels / questions_without_guessing if questions_without_guessing > 0 else 0
         model_accuracies[model_name] = accuracy
