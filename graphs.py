@@ -2,10 +2,10 @@ import matplotlib.pyplot as plt
 
 # Model names
 models = [
-    'word2vec_size100_window5',
-    'word2vec_size200_window5',
-    'word2vec_size100_window10',
-    'word2vec_size200_window10'
+    'your_own_corpus-E100-W5',
+    'your_own_corpus-E100-W10',
+    'your_own_corpus-E200-W5',
+    'your_own_corpus-E200-W10'
 ]
 
 # Corresponding accuracies from the analysis.csv

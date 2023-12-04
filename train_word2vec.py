@@ -108,8 +108,8 @@ embedding_sizes = [100, 200]
 corpus_prefix = 'your_own_corpus'
 
 # Train, evaluate models and save results
-for window in window_sizes:
-    for size in embedding_sizes:
+for size in embedding_sizes:
+    for window in window_sizes:
         model_name = f"{corpus_prefix}-E{size}-W{window}"
         model = train_word2vec(sentences, size, window, model_name)
         

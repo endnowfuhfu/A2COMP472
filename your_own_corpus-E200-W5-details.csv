@@ -13,7 +13,7 @@ salutes,greetings,greetings,correct
 solitary,alone,alert,wrong
 hasten,accelerate,accompany,wrong
 perseverance,endurance,disturbance,wrong
-fanciful,imaginative,imaginative,correct
+fanciful,imaginative,familiar,wrong
 showed,demonstrated,repeated,wrong
 constantly,continually,rapidly,wrong
 issues,subjects,subjects,correct
@@ -41,7 +41,7 @@ hind,rear,curved,wrong
 highlight,accentuate,N/A,guess
 hastily,hurriedly,hurriedly,correct
 temperate,mild,cold,wrong
-grin,smile,smile,correct
+grin,smile,rest,wrong
 verbally,orally,N/A,guess
 physician,doctor,doctor,correct
 essentially,basically,ordinarily,wrong
@@ -50,7 +50,7 @@ situated,positioned,emptying,wrong
 principal,major,most,wrong
 slowly,gradually,gradually,correct
 built,constructed,constructed,correct
-tasks,jobs,shops,wrong
+tasks,jobs,materials,wrong
 unlikely,improbable,disagreeable,wrong
 halfheartedly,apathetically,N/A,guess
 annals,chronicles,songs,wrong
@@ -66,9 +66,9 @@ tranquillity,peacefulness,happiness,wrong
 dissipate,disperse,N/A,guess
 primarily,chiefly,N/A,guess
 colloquial,conversational,N/A,guess
-resolved,settled,forgotten,wrong
+resolved,settled,settled,correct
 feasible,possible,permitted,wrong
-expeditiously,rapidly,rapidly,correct
+expeditiously,rapidly,frequently,wrong
 percentage,proportion,volume,wrong
 terminated,ended,postponed,wrong
 uniform,alike,hard,wrong

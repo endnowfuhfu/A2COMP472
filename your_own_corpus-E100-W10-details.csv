@@ -12,7 +12,7 @@ concisely,succinctly,freely,wrong
 salutes,greetings,ceremonies,wrong
 solitary,alone,fearless,wrong
 hasten,accelerate,accompany,wrong
-perseverance,endurance,disturbance,wrong
+perseverance,endurance,generosity,wrong
 fanciful,imaginative,imaginative,correct
 showed,demonstrated,repeated,wrong
 constantly,continually,rapidly,wrong
@@ -26,8 +26,8 @@ often,frequently,hardly,wrong
 easygoing,relaxed,frontier,wrong
 debate,argument,election,wrong
 narrow,thin,clear,wrong
-arranged,planned,explained,wrong
-infinite,limitless,structural,wrong
+arranged,planned,studied,wrong
+infinite,limitless,unusual,wrong
 showy,striking,incidental,wrong
 levied,imposed,N/A,guess
 deftly,skillfully,occasionally,wrong
@@ -67,8 +67,8 @@ dissipate,disperse,N/A,guess
 primarily,chiefly,N/A,guess
 colloquial,conversational,N/A,guess
 resolved,settled,settled,correct
-feasible,possible,evident,wrong
-expeditiously,rapidly,actually,wrong
+feasible,possible,permitted,wrong
+expeditiously,rapidly,frequently,wrong
 percentage,proportion,volume,wrong
 terminated,ended,ended,correct
 uniform,alike,sharp,wrong
