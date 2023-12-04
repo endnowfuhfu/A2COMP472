@@ -105,11 +105,12 @@ synonym_test_data = load_synonym_test_data(synonym_test_data_path)
 # Define model parameters
 window_sizes = [5, 10]
 embedding_sizes = [100, 200]
+corpus_prefix = 'your_own_corpus'
 
 # Train, evaluate models and save results
 for window in window_sizes:
     for size in embedding_sizes:
-        model_name = f"word2vec_size{size}_window{window}"
+        model_name = f"{corpus_prefix}-E{size}-W{window}"
         model = train_word2vec(sentences, size, window, model_name)
         
         # Evaluate the model

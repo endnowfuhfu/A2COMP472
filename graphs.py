@@ -10,10 +10,10 @@ models = [
 
 # Corresponding accuracies from the analysis.csv
 accuracies = [
-    0.2028985507246377,
-    0.2753623188405797,
-    0.21739130434782608,
-    0.3188405797101449
+    0.2318840579710145,
+    0.2318840579710145,
+    0.2898550724637681,
+    0.2898550724637681
 ]
 
 def read_random_baseline_accuracy(file_path='random_baseline_accuracy.txt'):

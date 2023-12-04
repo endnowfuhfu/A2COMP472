@@ -13,7 +13,7 @@ This project explores Natural Language Processing (NLP) through the application 
 
 `train_word2vec.py`: Script for Task 3: Training our own Models
 
-# Model Performance Comparison
+## Model Performance Comparison (Task 2)
 
 The following graph compares Pre-trained Models
 
@@ -21,7 +21,7 @@ The following graph compares Pre-trained Models
 
 The following graph shows the performance of different Word2Vec models compared to a random baseline and the human gold-standard.
 
-## Analysis
+### Analysis
 
 This section compares 2 models from different corpora, but same embedding size and  models from the same corpus, but different embedding size.
 
@@ -35,39 +35,16 @@ We can see that the accuracy of glove-wiki-300 is higher that glove-wiki-100. Th
 
 ![Model Comparison Graph](model_comparison.png)
 
-## Analysis
+## Analysis (Task 3)
 
-This section presents a comparative analysis of various Word2Vec models against a random baseline and a gold standard, focusing on their accuracy in synonym detection tasks.
+This section compares Word2Vec models trained on our own corpus with varying embedding sizes and window sizes.
 
-### Performance Benchmarks
-- **Random Baseline**: 
-  - **Accuracy**: 26.25%
-  - Serves as a basic benchmark for random guesswork.
-- **Gold Standard**:
-  - **Accuracy**: 88.28%
-  - Sets a high-performance target.
 
-### Word2Vec Model Evaluations
+### Different Embedding Sizes
+-The models trained with 200-dimensional embeddings (your_own_corpus-E200-W5 and your_own_corpus-E200-W10) consistently outperformed those with 100-dimensional embeddings (your_own_corpus-E100-W5 and your_own_corpus-E100-W10), achieving an accuracy of approximately 29%. This improvement underscores the capacity of larger embedding sizes to capture more nuanced semantic relationships, which is critical for the synonym detection task where slight variances in meaning can be pivotal.
 
-1. **word2vec_size100_window5**
-   - **Vocabulary Size**: 45,104
-   - **Accuracy**: 20.29% (14/69 correct)
-   - **Analysis**: Underperforms compared to the random baseline, suggesting limitations due to the smaller vector size and window size.
+### Different Window Sizes
+Comparing the models with different window sizes but the same embedding dimensions, we observe that the window size does not significantly affect the accuracy. Both your_own_corpus-E100-W5 and your_own_corpus-E100-W10 models yielded an accuracy of about 23%, and similarly, your_own_corpus-E200-W5 and your_own_corpus-E200-W10 both achieved around 29% accuracy. This suggests that within the context of our training corpus, the window size—representing the context scope for training—has a less pronounced effect than the embedding size.
 
-2. **word2vec_size200_window5**
-   - **Vocabulary Size**: 45,104
-   - **Accuracy**: 27.54% (19/69 correct)
-   - **Analysis**: Shows improvement over the previous model, exceeding the random baseline slightly. Indicates a positive impact of a larger vector size.
-
-3. **word2vec_size100_window10**
-   - **Vocabulary Size**: 45,104
-   - **Accuracy**: 21.74% (15/69 correct)
-   - **Analysis**: Minor improvement over the size100_window5 model but still below the random baseline. Increased window size does not significantly enhance performance.
-
-4. **word2vec_size200_window10**
-   - **Vocabulary Size**: 45,104
-   - **Accuracy**: 31.88% (22/69 correct)
-   - **Analysis**: The best performer among the tested models. A larger vector size and window size contribute positively, achieving an accuracy above the random baseline. However, it still significantly lags behind the gold standard.
-
-### Conclusion
-The analysis reveals that larger vector sizes and window sizes can improve Word2Vec models' performance in synonym detection tasks. However, despite these improvements, all models substantially trail the gold standard. This gap underscores the necessity for further optimizations, such as parameter tuning, using more extensive training data, or exploring different modeling techniques.
+### Summary
+Our analysis indicates that increasing the embedding size has a beneficial impact on the model's ability to discern synonyms within our corpus. In contrast, variations in window size did not demonstrate a noticeable difference, implying that for our specific dataset and NLP task, the embedding size is a more crucial factor than the contextual window. This insight directs us towards prioritizing embedding complexity over context breadth for future model optimizations.
