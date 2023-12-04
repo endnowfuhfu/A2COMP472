@@ -29,7 +29,7 @@ This section compares 2 models from different corpora, but same embedding size a
 We can see that the accuracy of glove-twitter-200 is much lower that glove-wiki-gigaword-200. This is probably because Twitter contains a lot of slang, abbreviations, and informal language. This might make it less suitable for tasks that require understanding of standard or formal vocabulary compared to the glove-wiki-gigaword-200 model, which is trained on text from Wikipedia, a more formal and curated dataset.
 
 ### Different Embeddings
-
+We can see that the accuracy of glove-wiki-300 is higher that glove-wiki-100. This is expected because with 300 dimensions, the glove-wiki-gigaword-300 model can encode more subtle differences between words, which may be crucial for synonym detection where distinctions can be subtle.
 
 
 
