@@ -35,13 +35,11 @@ We can see that the accuracy of glove-wiki-300 is higher that glove-wiki-100. Th
 The human gold standard represents the upper limit of performance. Glove-wiki-giga-300 has an even higher accuracy than the human gold standard, which means the the model is quite effective.
 
 
-
-![Model Comparison Graph](model_comparison.png)
-
 ## Analysis (Task 3)
 
 This section compares Word2Vec models trained on our own corpus with varying embedding sizes and window sizes.
 
+![Model Comparison Graph](model_comparison.png)
 
 ### Different Embedding Sizes
 -The models trained with 200-dimensional embeddings (your_own_corpus-E200-W5 and your_own_corpus-E200-W10) consistently outperformed those with 100-dimensional embeddings (your_own_corpus-E100-W5 and your_own_corpus-E100-W10), achieving an accuracy of approximately 29%. This improvement underscores the capacity of larger embedding sizes to capture more nuanced semantic relationships, which is critical for the synonym detection task where slight variances in meaning can be pivotal.
