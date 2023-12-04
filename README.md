@@ -42,10 +42,10 @@ This section compares Word2Vec models trained on our own corpus with varying emb
 ![Model Comparison Graph](model_comparison.png)
 
 ### Different Embedding Sizes
--The models trained with 200-dimensional embeddings (your_own_corpus-E200-W5 and your_own_corpus-E200-W10) consistently outperformed those with 100-dimensional embeddings (your_own_corpus-E100-W5 and your_own_corpus-E100-W10), achieving an accuracy of approximately 29%. This improvement underscores the capacity of larger embedding sizes to capture more nuanced semantic relationships, which is critical for the synonym detection task where slight variances in meaning can be pivotal.
+-The models trained with 200-dimensional embeddings (your_own_corpus-E200-W5 and your_own_corpus-E200-W10) consistently outperformed those with 100-dimensional embeddings (your_own_corpus-E100-W5 and your_own_corpus-E100-W10), achieving an accuracy of approximately 29%. This improvement underscores the capacity of larger embedding sizes to capture more nuanced semantic relationships, which is critical for the synonym detection task.
 
 ### Different Window Sizes
 Comparing the models with different window sizes but the same embedding dimensions, we observe that the window size does not significantly affect the accuracy. Both your_own_corpus-E100-W5 and your_own_corpus-E100-W10 models yielded an accuracy of about 23%, and similarly, your_own_corpus-E200-W5 and your_own_corpus-E200-W10 both achieved around 29% accuracy. This suggests that within the context of our training corpus, the window size—representing the context scope for training—has a less pronounced effect than the embedding size.
 
 ### Summary
-Our analysis indicates that increasing the embedding size has a beneficial impact on the model's ability to discern synonyms within our corpus. In contrast, variations in window size did not demonstrate a noticeable difference, implying that for our specific dataset and NLP task, the embedding size is a more crucial factor than the contextual window. This insight directs us towards prioritizing embedding complexity over context breadth for future model optimizations.
+Our analysis indicates that increasing the embedding size has a beneficial impact on the model's ability to discern synonyms within our corpus. In contrast, variations in window size did not demonstrate a noticeable difference, implying that for our specific dataset and NLP task, the embedding size is a more crucial factor than the contextual window.
