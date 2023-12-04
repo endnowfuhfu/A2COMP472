@@ -110,10 +110,10 @@ def read_random_baseline_accuracy(file_path='random_baseline_accuracy.txt'):
         return float(f.read())
 def main():
     model = api.load("word2vec-google-news-300")
-    model2 = api.load("glove-wiki-gigaword-100")
-    model3 = api.load("glove-twitter-200")
-    model4 = api.load("glove-wiki-gigaword-300")
-    model5 = api.load("glove-wiki-gigaword-200")
+    model2 = api.load("glove-twitter-200")
+    model3 = api.load("glove-wiki-gigaword-200")
+    model4 = api.load("glove-wiki-gigaword-100")
+    model5 = api.load("glove-wiki-gigaword-300")
     #model6 = api.load("fasttext-wiki-news-subwords-300")
     
     with open('synonym.json', 'r') as file:
