@@ -31,6 +31,9 @@ We can see that the accuracy of glove-twitter-200 is much lower that glove-wiki-
 ### Different Embeddings
 We can see that the accuracy of glove-wiki-300 is higher that glove-wiki-100. This is expected because with 300 dimensions, the glove-wiki-gigaword-300 model can encode more subtle differences between words, which may be crucial for synonym detection where distinctions can be subtle.
 
+### Human Gold Standard
+The human gold standard represents the upper limit of performance. Glove-wiki-giga-300 has an even higher accuracy than the human gold standard, which means the the model is quite effective.
+
 
 
 ![Model Comparison Graph](model_comparison.png)
